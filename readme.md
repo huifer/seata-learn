@@ -577,7 +577,7 @@ server:
 
 
 
-- 具体工程代码详见 
+- 具体工程代码详见 : [seata-lean](https://github.com/huifer/seata-learn)
 
 
 
