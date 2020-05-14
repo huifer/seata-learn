@@ -1,0 +1,53 @@
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:32832/seata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123qwe
+    max-wait: 60000
+    max-active: 100
+    min-idle: 10
+    initial-size: 10
+
+
+mybatis:
+  type-aliases-package: org.huifer.seata.product.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+
+server:
+  port: 8080
+  
+  
+  
+  
+seata:
+  enabled: true
+  application-id: client
+  tx-service-group: my_test_tx_group
+
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+
+
+  config:
+    type: nacos
+    file:
+      name: file.conf
+    nacos:
+      namespace:
+      serverAddr: localhost:8848
+      group: SEATA_GROUP
+      userName: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      namespace:
+      userName: "nacos"
+      password: "nacos"

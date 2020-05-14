@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.huifer.seata.product.mapper.TestTxMapper">
+    <resultMap id="BaseResultMap" type="org.huifer.seata.product.entity.TestTx">
+        <!--@mbg.generated-->
+        <!--@Table test_tx-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="int_value" jdbcType="INTEGER" property="intValue"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, int_value
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from test_tx
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from test_tx
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.huifer.seata.product.entity.TestTx"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into test_tx (int_value)
+        values (#{intValue,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.huifer.seata.product.entity.TestTx"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into test_tx
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="intValue != null">
+                int_value,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="intValue != null">
+                #{intValue,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.huifer.seata.product.entity.TestTx">
+        <!--@mbg.generated-->
+        update test_tx
+        <set>
+            <if test="intValue != null">
+                int_value = #{intValue,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.huifer.seata.product.entity.TestTx">
+        <!--@mbg.generated-->
+        update test_tx
+        set int_value = #{intValue,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="addOne">
+        update test_tx set int_value = int_value+1 where id = #{i}
+    </update>
+</mapper>
